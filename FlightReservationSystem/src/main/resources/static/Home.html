@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>JetEase Airline Home</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
+    <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Aclonica&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+    <script src="home.js" defer></script>
+    <style>
+      body{
+        background-color: #000000;
+      }
+
+      /* navigation bar */
+      .title h2{
+        color: #a6d8ff;
+        margin: .2rem;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 28px;
+      }
+      .navbar{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        min-height: 8vh;
+        background-color:#011a2b;
+        opacity: 0.8;
+        font-family: 'Poppins',sans-serif;
+        position: fixed;
+        width: 100%;
+      }
+      .navlinks ul{
+        display: flex;
+        margin: 0;
+        padding: 0;
+      }
+      .navlinks li a{
+        color: rgb(252, 252, 252);
+        text-decoration: none ;
+        font-size: 16px;
+        padding: 14px 16px;
+        display: block;
+      }
+      .navlinks li{
+        list-style: none;
+        display: inline;
+        padding-right: 70px;
+      }
+      .navlinks li:hover{
+        color: yellow;
+      }
+      .toggle-button{
+        position: absolute;
+        top: 0.75rem;
+        right: 1rem;
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        width:30px;
+        height:21px;
+      }
+      .toggle-button .bars{
+        height: 3px;
+        width: 100%;
+        background-color: white;
+        border-radius: 10px;
+      }
+      .button {
+        background-color: #ccebff;
+        color: black;
+        border: 3px solid #008CBA;
+        padding: 10px 25px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        transition-duration: 0.2s;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      .button:hover {
+        background-color: #008CBA;
+        color: white;
+        border: 3px solid #ccebff;
+      }
+      @media (max-width: 600px){
+        .toggle-button{
+          display: flex;
+        }
+        .navlinks{
+          display: none;
+          width: 100%;
+        }
+        .navbar{
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .navlinks ul{
+          width: 100%;
+          flex-direction: column;
+        }
+        .navlinks li{
+          text-align: center;
+        }
+        .navlinks li a{
+          padding: .5rem 1rem;
+        }
+        .navlinks.active{
+          display: flex;
+        }
+      }
+      .mySlides{
+        height: 500px;
+      }
+      /* content */
+      .content .name{
+        /* color:rgb(179, 214, 243);*/
+        text-align: center;
+        font-size: 42px;
+        font-family: 'Aclonica', sans-serif;
+        color:  #66d9ff;
+      }
+
+      .parallax {
+        background-image: url("covid.png");
+        min-height: 300px;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      .text h1{
+        font-family: 'Acme', sans-serif;
+        color: rgb(220, 234, 243);
+        font-size: 30px;
+      }
+      .text p{
+        text-align: center;
+        color: rgb(250, 248, 248);
+        font-style: italic;
+        font-size: larger;
+      }
+      .text img{
+        align-content: center;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 400px;
+        height: 350px;
+      }
+      .text h2{
+        text-align: center;
+      }
+      #active {
+        background-color: #84b7f5;
+      }
+      #links:hover{
+        color: #0099ff;
+      }
+    </style>
+</head>
+
+<body>
+    <form>
+      <!-- navigation bar -->
+
+      <nav class="navbar">
+
+        <div class="title"><h2>JetEase Airline</h2></div>
+
+        <a href="#" class="toggle-button">
+          <span class="bars"></span>
+          <span class="bars"></span>
+          <span class="bars"></span>
+        </a>
+        <div class="navlinks">
+          <ul>
+            <li><a id= "active" href="Home.html">Home</a></li>
+            <li><a id= "links" href="About.html" >About</a></li>
+            <li><a id = "links" href="">View Flights</a></li>
+            <li><a id = "links" href="">View Reservations</a></li>
+            <li><a id = "links" href="SearchFlight.html">Search Flight</a></li>
+            <input class = "button" type="submit" value="Login" name="login" onclick="form.action='Login Form.html'" />
+          </ul>
+        </div>
+      </nav>
+
+
+      <!-- slide show -->
+
+      <section>
+        <img class="mySlides" src="img1.png" style="width:100%" >
+        <img class="mySlides" src="img2.png" style="width:100%" >
+        <img class="mySlides" src="img3.png" style="width:100%">
+      </section>
+
+      <!-- content -->
+
+      <section class="content">
+        <h1 class="name">Welcome to JetEase Airline Flight Reservation System</h1>
+      </section>
+
+
+      <div class="parallax"></div>
+      <div style="height:600px;background-color:rgba(2, 29, 46, 0.966)">
+        <div class="text">
+          <marquee direction="right"><h1><font color="#0099cc">Travel Safely With Us</font></h1></marquee>
+          <p>At JetEase Airlines, the safety and the well-being of our passengers and crew are our utmost priorities.
+            We are working closely with national and global authorities to provide guidance,
+            travel and safety updates to our customers and to upgrade our services.
+          </p>
+
+          <img src="safetymeasures.png">
+        </div>
+      </div>
+    </form>
+</body>
+</html>
