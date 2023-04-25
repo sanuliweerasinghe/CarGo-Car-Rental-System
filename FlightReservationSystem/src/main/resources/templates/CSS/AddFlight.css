@@ -1,0 +1,160 @@
+html, body {
+    display: flex;
+    justify-content: center;
+    font-size: 15px;
+}
+body {
+    background-image: url("../background.jpg");
+    background-size: 100%;
+}
+form {
+    border: 5px solid #b8b894;
+    background-color: #e6f3ff;
+    height: 92%;
+    width: 50%;
+    margin-top : 100px;
+}
+input[type=text], input[type=password] , input[type=date]{
+    width: 100%;
+    padding: 16px 8px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+input[type=submit], input[type=reset]{
+    background-color: #3366ff;
+    color: white;
+    padding: 14px 0;
+    margin: 10px 0;
+    border: 2px solid #001a33;
+    cursor: grabbing;
+    width: 35%;
+}
+#logout{
+    width: 20%;
+}
+h1 {
+    text-align:center;
+    fone-size:18;
+}
+input[type=submit]:hover {
+    opacity: 0.8;
+}
+input[type=reset]:hover {
+    opacity: 0.8;
+}
+.formcontainer {
+    text-align: left;
+    margin: 24px 50px 12px;
+}
+.container {
+    padding: 16px 0;
+    text-align:left;
+}
+span.psw {
+    float: right;
+    padding-top: 0;
+    padding-right: 15px;
+}
+span.cpsw {
+    float: right;
+    padding-top: 0;
+    padding-right: 15px;
+}
+
+/* Change styles for span on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+}
+
+/* navigation bar */
+.title h2{
+    color: #a6d8ff;
+    margin: .2rem;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 28px;
+}
+.navbar{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 8vh;
+    background-color:#011a2b;
+    opacity: 0.8;
+    font-family: 'Poppins',sans-serif;
+    position: fixed;
+    width: 100%;
+}
+.navlinks ul{
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+.navlinks li a{
+    color: rgb(252, 252, 252);
+    text-decoration: none ;
+    font-size: 16px;
+    padding: 14px 16px;
+    display: block;
+}
+.navlinks li{
+    list-style: none;
+    display: inline;
+    padding-right: 60px;
+}
+.navlinks li:hover{
+    color:#84b7f5;
+}
+.toggle-button{
+    position: absolute;
+    top: 0.75rem;
+    right: 1rem;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width:30px;
+    height:21px;
+}
+.toggle-button .bars{
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+@media (max-width: 600px){
+    .toggle-button{
+        display: flex;
+    }
+    .navlinks{
+        display: none;
+        width: 100%;
+    }
+    .navbar{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .navlinks ul{
+        width: 100%;
+        flex-direction: column;
+    }
+    .navlinks li{
+        text-align: center;
+    }
+    .navlinks li a{
+        padding: .5rem 1rem;
+    }
+    .navlinks.active{
+        display: flex;
+    }
+}
+#active {
+    background-color: #84b7f5;
+}
+#links:hover{
+    color: #0099ff;
+}

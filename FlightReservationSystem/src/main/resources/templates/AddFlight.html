@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title> Add Flight </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
+        <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Aclonica&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+
+        <!-- Linking the CSS page -->
+        <link rel="stylesheet" href="CSS/AddFlight.css">
+
+    </head>
+
+    <body>
+        <nav class="navbar">
+            <div class="title"><h2>JetEase Airline</h2></div>
+
+            <a href="#" class="toggle-button">
+                <span class="bars"></span>
+                <span class="bars"></span>
+                <span class="bars"></span>
+            </a>
+
+            <div class="navlinks">
+                <ul>
+                    <li><a id = "links" href="../static/AdminDashboard.html">Home</a></li>
+                    <li><a id = "links" href="adminViewFlightUpdateDelete.jsp">View Flight</a></li>
+                    <li><a id = "active" href="adminAddFlightPage.html">Add Flight</a></li>
+                    <li><a id = "links"href="adminViewTicketInfo.jsp">Ticket Info</a></li>
+                    <li><a id = "links" href="adminViewReservations.jsp">Reservations</a></li>
+                    <li> <font color="white">Hi Administrator </font></li>
+                </ul>
+            </div>
+        </nav>
+
+        <form action="#" th:action="@{/AddFlight}" th:object="${addFlight}" method="post">
+            <h1> Add New Flight </h1>
+            <div class="formcontainer">
+                <hr/>
+                <div class="container">
+                    <label><strong>Flight No*</strong></label>
+                    <input type="text" placeholder="Enter Flight No" name="flightNo" required th:field="*{flightID}">
+                    <label for="flightName"><strong>Flight Name*</strong></label>
+                    <input type="text" placeholder="Enter Flight Name" name="flightName" required th:field="*{flightName}">
+                    <label for="fromCity"><strong>From City*</strong></label>
+                    <input type="text" placeholder="Enter From City" name="fromCity" required th:field="*{fromCity}">
+                    <label for="toCity"><strong>To City*</strong></label>
+                    <input type="text" placeholder="Enter To City" name="toCity" required th:field="*{toCity}">
+                    <label for="date"><strong>Departure Date*</strong></label>
+                    <input type="date" id="date" name="departureDate" required th:field="*{departureDate}">
+                    <label for="time"><strong>Departure Time*</strong></label>
+                    <input type="text" placeholder="Enter Departure Time" name="time" required th:field="*{departureTime}">
+                    <label for="travelDuration"><strong>Travel Duration*</strong></label>
+                    <input type="text" placeholder="Enter Travel Duration" name="travelDuration" required th:field="*{duration}">
+                    <label for="Ticket Price"><strong>Ticket Price(Rs)*</strong></label>
+                    <input type="text" placeholder="Ticket Price for Economy Class" name="economy" th:field="*{economyPrice}">
+                    <input type="text" placeholder="Ticket Price for Premium Economy Class" name="premiumEconomy" th:field="*{premiumEconomyPrice}">
+                    <input type="text" placeholder="Ticket Price for Business Class" name="business" required th:field="*{businessPrice}">
+                    <input type="text" placeholder="Ticket Price for First Class" name="first" required th:field="*{firstPrice}">
+                </div>
+
+                <script th:inline="javascript">
+                    function showAlert() {
+                        alert('New Flight Information Added Successfully!!!');
+                        window.location.href = '/templates/ViewFlights.html';
+                    }
+                </script>
+
+                <center>
+                    <input type="submit" value="Add Flight" name="add" onclick="showAlert()"/> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="reset" value="Cancel" name="cancel" />
+                </center>
+            </div>
+        </form>
+    </body>
+</html>
