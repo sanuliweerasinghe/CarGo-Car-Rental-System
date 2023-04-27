@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
   <head>
     <title>Search Flight</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
@@ -14,41 +14,41 @@
 
   </head>
   
-  <body>  
+  <body>
       
-    <nav class="navbar">
-      
-        <div class="title"><h2>JetEase Airline</h2></div>
-        
-        <a href="#" class="toggle-button">
-            <span class="bars"></span>
-            <span class="bars"></span>
-            <span class="bars"></span>
-        </a>
+        <nav class="navbar">
 
-        <div class="navlinks">
-            <ul>
-                <li><a id= "links" href="../static/Home.html">Home</a></li>
-                <li><a id= "links" href="../static/About.html" >About</a></li>
-                <li><a id = "links" href="">View Flights</a></li>
-                <li><a id = "links" href="">View Reservations</a></li>
-                <li><a id = "active" href="SearchFlight.html">Search Flight</a></li>
-                <input class = "button" type="submit" value="Login" name="login" onclick="form.action='../templates/Login Form.html'" />
-            </ul>
-        </div>
-    </nav>
+            <div class="title"><h2>JetEase Airline</h2></div>
+
+            <a href="#" class="toggle-button">
+                <span class="bars"></span>
+                <span class="bars"></span>
+                <span class="bars"></span>
+            </a>
+
+            <div class="navlinks">
+                <ul>
+                    <li><a id= "links" href="../static/Home.html">Home</a></li>
+                    <li><a id= "links" href="../static/About.html" >About</a></li>
+                    <li><a id = "links" href="ViewFlights.html">View Flights</a></li>
+                    <li><a id = "links" href="../static/ViewReservationsNoUser.html">View Reservations</a></li>
+                    <li><a id = "active" href="SearchFlight.html">Search Flight</a></li>
+                    <input class = "button" type="submit" value="Login" name="login" onclick="form.action='../templates/Login Form.html'" />
+                </ul>
+            </div>
+        </nav>
       
     <div class="div1"> <marquee direction="left">Find your flights here!</marquee></div>
         
-    <form action= "" name = "SearchFilterFlights" method ="post">
+    <form action="#" th:object="${search}" method ="post" >
         <div class = "div5"> 
 
             <h1 class = "search">Search and Filtre Flights </h1> 
             <h3 class = "desc"><font color="white">With JetEase Airline Flight Reservation System, <br>you can easily search your flights</font></h3><br><br>
             <h2 class = "searchBar">Search Flight by the Flight ID</h2>
             <center>
-                <input class ="textDec" type="text" name="SearchFlightId" placeholder="Enter Flight ID" />
-                <input class= "button" type="submit" value="Search" name="search" onclick="form.action=''"/>
+                <input class ="textDec" type="text" name="flightID" placeholder="Enter Flight ID" th:field="*{flightID}"/>
+                <input class= "button" type="submit" value="Search" name="search" th:action="@{/SearchFlight}"/>
             </center>
         </div>
         
@@ -59,12 +59,12 @@
                 <hr/>
                 <div class="container">
                     <label><strong> Departure Date</strong></label>
-                    <input class = "textBox" type="date" id="date" name="departureDate" >
+                    <input class = "textBox" type="date" id="date" name="departureDate" th:field="*{departureDate}">
                     <label><strong>Destination</strong></label>
-                    <input class = "textBox" type="text" placeholder="Enter Destination" name="destination" >
+                    <input class = "textBox" type="text" placeholder="Enter Destination" name="toCity" th:field="*{toCity}">
                 </div>
                 <center>
-                    <input class = "submit" type="submit" value="Filtre" name="flitre" onclick="form.action=''"/>
+                    <input class = "submit" type="submit" value="Filtre" name="flitre" th:action="@{/FiltreFlight}"/>
                 </center>
           </div>
         </div>
