@@ -2,6 +2,7 @@ package com.flightreservationsystem.Controllers;
 
 import com.flightreservationsystem.Models.Users;
 import com.flightreservationsystem.Repositories.IUsersRepository
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,7 +34,7 @@ public class UsersController
     }
 
     @PostMapping("/LoginForm")
-    public String login(@ModelAttribute("login") Users login, BindingResult bindingResult, Model model) {
+    public String login(@ModelAttribute("login") Users login, BindingResult bindingResult, Model model, HttpSession session) {
 
         // Check if the user exists in the database
         Users user = iUsersRepository.findByUsername(login.getUsername());
@@ -59,6 +60,9 @@ public class UsersController
         // When the user exists and the password is correct
         else
         {
+            // Setting the username in the session to be accessed later in the application
+            session.setAttribute("username", user.getUsername());
+
             // For the admin login, redirects to the Admin Dashboard
             if (user.getUsername().equals("Admin"))
             {
