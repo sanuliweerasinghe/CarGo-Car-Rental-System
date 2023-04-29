@@ -70,8 +70,8 @@ public class FlightsController
     @GetMapping("/ViewFlightsAdmin")
     public String viewFlightsForAdmin(Model model)
     {
-        List<Flights> flights = iFlightsRepository.findAll();
-        model.addAttribute("flights", flights);
+        List<Flights> flightsAdmin = iFlightsRepository.findAll();
+        model.addAttribute("flightsAdmin", flightsAdmin);
 
         return "ViewFlightsAdmin";
     }

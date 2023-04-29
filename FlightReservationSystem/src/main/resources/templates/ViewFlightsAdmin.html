@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View Flights</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
+    <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Aclonica&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+
+    <!-- Linking the CSS page -->
+    <link rel="stylesheet" href="../static/CSS/ViewFlights.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="title"><h2>JetEase Airline</h2></div>
+
+        <a href="#" class="toggle-button">
+            <span class="bars"></span>
+            <span class="bars"></span>
+            <span class="bars"></span>
+        </a>
+
+        <div class="navlinks">
+            <ul>
+                <li><a id = "links" href="../static/AdminDashboard.html">Home</a></li>
+                <li><a id = "active" href="../templates/ViewFlightsAdmin.html">All Flights</a></li>
+                <li><a id = "links" href="../templates/AddFlight.html" >Add Flight</a></li>
+                <li><a id = "links" href="" >All Reservations</a></li>
+                <input class = "button" type="submit" value="Logout" name="logout" onclick="form.action='logout'" />
+            </ul>
+        </div>
+    </nav>
+    <form>
+        <center><h1>Flight Information </h1></center><br>
+        <div class="formcontainer">
+            <hr/>
+            <div class="container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th> Flight No </th>
+                            <th> Flight Name </th>
+                            <th> From City </th>
+                            <th> To City </th>
+                            <th> Departure Date </th>
+                            <th> Departure Time </th>
+                            <th> Duration </th>
+                            <th> First Class Price </th>
+                            <th> Business Class Price </th>
+                            <th> Economy Class Price </th>
+                            <th> Premium Economy Class Price </th>
+
+                        </tr>
+                    <tbody>
+                    <tr th:each="flightsAdmin : ${flightsAdmin}">
+                        <td th:text="${flightsAdmin.flightID}"></td>
+                        <td th:text="${flightsAdmin.flightName}"></td>
+                        <td th:text="${flightsAdmin.fromCity}"></td>
+                        <td th:text="${flightsAdmin.toCity}"></td>
+                        <td th:text="${flightsAdmin.departureDate}"></td>
+                        <td th:text="${flightsAdmin.departureTime}"></td>
+                        <td th:text="${flightsAdmin.duration}"></td>
+                        <td th:text="${flightsAdmin.firstPrice}"></td>
+                        <td th:text="${flightsAdmin.businessPrice}"></td>
+                        <td th:text="${flightsAdmin.economyPrice}"></td>
+                        <td th:text="${flightsAdmin.premiumEconomyPrice}"></td>
+                        <td>
+                            <a th:href="@{/editFlight(flightID=${flightsAdmin.flightID})}">Edit</a>
+                            <a th:href="@{/deleteFlight(flightID=${flightsAdmin.flightID}, departureDate=${flightsAdmin.departureDate})}" onclick="return confirm('Are you sure you want to delete this flight?')">Delete</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
