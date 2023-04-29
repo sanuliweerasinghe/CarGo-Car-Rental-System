@@ -12,4 +12,7 @@ public interface IFlightsRepository extends CrudRepository<Flights, Integer>
     // Method to retrieve all records of flights table
     List<Flights> findAll();
 
+    // This method will return a Flights object if a record with the given DepartureDate and toCity exists in the flights table
+    List<Flights> findByDepartureDateAndToCity(Date departureDate, String toCity);
+
 }

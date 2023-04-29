@@ -3,7 +3,6 @@ package com.flightreservationsystem.Services;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import com.flightreservationsystem.Models.Flights;
 import com.flightreservationsystem.Repositories.IFlightsRepository;
@@ -25,5 +24,14 @@ public class FlightsService
         iFlightsRepository.findAll().forEach(flights1 -> flights.add(flights1));
 
         return flights;
+    }
+
+    // Getting the records returned for the filtering criteria entered by the user using the method declared in IFlightsRepository
+    public List<Flights> getFlightsByDepartureDateAndToCity(Date departureDate, String toCity)
+    {
+        // Creating a list to fetch flight records from repository based on departureDate and tocity
+        List<Flights> filteredResult = iFlightsRepository.findByDepartureDateAndToCity(departureDate, toCity);
+
+        return filteredResult;
     }
 }

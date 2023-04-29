@@ -95,4 +95,90 @@ public class FlightsController
 
         return "ViewFlights";
     }
+
+    // -------------------------- Methods for Searching flights by FlightID -------------------------------
+
+    // Method to get the flightID entered by user to search
+    @GetMapping("/SearchFlight")
+    public String getFlightID(Model model)
+    {
+        // Creating an object of the Flights model class
+        Flights search = new Flights();
+
+        // Passing the model class object as a thymeleaf object
+        model.addAttribute("search", search);
+
+        // Adding the 'search' value to the model as the attribute 'flightID'
+        model.addAttribute("flightID", search);
+
+        return "SearchFlight";
+    }
+
+    // Method for displaying the search results
+    @PostMapping("/SearchFlight")
+    public String searchFlightById(@RequestParam("flightID") int flightID, Model model)
+    {
+        // Creating an Optional container to hold flight records if returned
+        Optional<Flights> searchFlights = iFlightsRepository.findById(flightID);
+
+        // If there are flights which matches the searching criteria
+        if (searchFlights.isPresent())
+        {
+            // Retrieving the Flight object from the Optional using get() method and assigning it to a variable
+            Flights search = searchFlights.get();
+
+            // Passing the above object as a thymeleaf object to be accessed by ViewSearchResults.html
+            model.addAttribute("search", search);
+
+            return "ViewSearchResults";
+        }
+        // If there's no flights which matches the searching criteria
+        else
+        {
+            return "../static/NoSearchResults";
+        }
+    }
+
+    // ----------------------- Methods for Filtering flights by departureDate and toCity ---------------------
+
+    // Method to get the departureDate and toCity entered by user to filter
+    @GetMapping("/FiltreFlight")
+    public String filterFlights(Model model)
+    {
+        // Creating an object of the Flights model class
+        Flights search = new Flights();
+
+        // Passing the model class object as a thymeleaf object
+        model.addAttribute("search", search);
+
+        // Setting attributes for Departure Date and To city
+        model.addAttribute("departureDate", search);
+        model.addAttribute("toCity", search);
+
+        return "SearchFlight";
+    }
+
+    // Method for displaying the filter results
+    @PostMapping("/FiltreFlight")
+    public String filterFlightByDateAndDestination(@RequestParam("departureDate") Date departureDate,
+                                                   @RequestParam("toCity") String toCity,
+                                                   Model model)
+    {
+        // Creating a list to store the returned flight records from the flights table
+        List<Flights> filterFlights = flightsService.getFlightsByDepartureDateAndToCity(departureDate, toCity);
+
+        // If any flights are available for the filtering criteria
+        if (filterFlights.isEmpty())
+        {
+            // Directing to the NoFiltreResults.html page
+            return "../static/NoFiltreResults";
+        }
+        else
+        {
+            // Passing the list as a thymeleaf object to ViewFiltreResults.html
+            model.addAttribute("filterFlights", filterFlights);
+
+            return "ViewFiltreResults";
+        }
+    }
 }
