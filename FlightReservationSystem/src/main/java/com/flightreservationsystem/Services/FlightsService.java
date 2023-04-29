@@ -8,6 +8,7 @@ import com.flightreservationsystem.Models.Flights;
 import com.flightreservationsystem.Repositories.IFlightsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import javax.transaction.Transactional;
 
 
 //defining the business logic
@@ -34,4 +35,13 @@ public class FlightsService
 
         return filteredResult;
     }
+
+    // Method to delete the flight
+    @Transactional
+    public void deleteFlightById(int flightID, Date departureDate)
+    {
+        // Deleting the record in flights table by the flightID and departureDate
+        iFlightsRepository.deleteByFlightIDAndDepartureDate(flightID, departureDate);
+    }
+
 }

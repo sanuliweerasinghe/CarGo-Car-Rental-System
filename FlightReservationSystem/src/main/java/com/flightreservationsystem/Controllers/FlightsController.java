@@ -9,6 +9,7 @@ import com.flightreservationsystem.Services.FlightsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import com.flightreservationsystem.Models.Flights;
 
@@ -180,5 +181,17 @@ public class FlightsController
 
             return "ViewFiltreResults";
         }
+    }
+
+    // ----------------------- Method for deleting flights by flightID and departureDate ---------------------
+
+    @GetMapping("/deleteFlight")
+    public String deleteFlight(@RequestParam("flightID") int flightID,
+                               @RequestParam("departureDate") Date departureDate)
+    {
+        // Calling the method of FlightService to delete the flight record by flightID and departureDate
+        flightsService.deleteFlightById(flightID, departureDate);
+
+        return "redirect:/ViewFlightsAdmin";
     }
 }
