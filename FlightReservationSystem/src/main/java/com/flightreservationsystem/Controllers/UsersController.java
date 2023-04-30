@@ -2,6 +2,7 @@ package com.flightreservationsystem.Controllers;
 
 import com.flightreservationsystem.Models.Users;
 import com.flightreservationsystem.Repositories.IUsersRepository
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -83,13 +84,13 @@ public class UsersController
                 // For the admin login, redirects to the Admin Dashboard
                 if (user.getUsername().equals("Admin"))
                 {
-                    return "../static/AdminDashboard";
+                    return "AdminDashboard";
                 }
 
                 // For the user login, redirects to the User Dashboard
                 else
                 {
-                    return "../static/UserDashboard";
+                    return "UserDashboard";
                 }
             }
             catch (Exception e)
@@ -97,5 +98,19 @@ public class UsersController
                 return "LoginForm";
             }
         }
+    }
+
+    // ---------------------------------- Method to Logout the logged in user ---------------------------------------
+    @GetMapping("/Logout")
+    public String logout(HttpServletRequest request)
+    {
+        HttpSession session = request.getSession(false);
+        SecurityContextHolder.clearContext();
+
+        if (session != null)
+        {
+            session.invalidate();
+        }
+        return "../static/Home";
     }
 }
