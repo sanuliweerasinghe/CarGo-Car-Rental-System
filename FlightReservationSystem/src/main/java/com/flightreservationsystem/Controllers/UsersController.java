@@ -2,12 +2,18 @@ package com.flightreservationsystem.Controllers;
 
 import com.flightreservationsystem.Models.Users;
 import com.flightreservationsystem.Repositories.IUsersRepository
-import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+
+import jakarta.servlet.http.HttpSession;
 
 //Marking class as Controller
 @Controller
@@ -32,6 +38,9 @@ public class UsersController
 
         return "LoginForm";
     }
+
+    @Autowired
+    AuthenticationManager authenticationManager;
 
     @PostMapping("/LoginForm")
     public String login(@ModelAttribute("login") Users login, BindingResult bindingResult, Model model, HttpSession session) {
@@ -60,19 +69,32 @@ public class UsersController
         // When the user exists and the password is correct
         else
         {
-            // Setting the username in the session to be accessed later in the application
-            session.setAttribute("username", user.getUsername());
-
-            // For the admin login, redirects to the Admin Dashboard
-            if (user.getUsername().equals("Admin"))
+            try
             {
-                return "../static/AdminDashboard";
+                // Authenticates the user's credentials using the provided authentication manager.
+                Authentication auth = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
+
+                // Setting the authentication object in the context holder for security.
+                SecurityContextHolder.getContext().setAuthentication(auth);
+
+                // Setting the username in the session to be accessed later in the application
+                session.setAttribute("username", user.getUsername());
+
+                // For the admin login, redirects to the Admin Dashboard
+                if (user.getUsername().equals("Admin"))
+                {
+                    return "../static/AdminDashboard";
+                }
+
+                // For the user login, redirects to the User Dashboard
+                else
+                {
+                    return "../static/UserDashboard";
+                }
             }
-
-            // For the user login directed to User dashboard
-            else
+            catch (Exception e)
             {
-                return "../static/UserDashboard";
+                return "LoginForm";
             }
         }
     }
