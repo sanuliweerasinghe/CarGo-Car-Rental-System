@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>View Flights</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
+  <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Aclonica&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+
+  <!-- Linking the CSS page -->
+  <link rel="stylesheet" href="../static/CSS/ViewFlights.css">
+
+</head>
+
+<body>
+
+<nav class="navbar">
+  <div class="title"><h2>JetEase Airline</h2></div>
+
+  <a href="#" class="toggle-button">
+    <span class="bars"></span>
+    <span class="bars"></span>
+    <span class="bars"></span>
+  </a>
+
+  <div class="navlinks">
+    <ul>
+      <li><a id= "links" href="../static/Home.html">Home</a></li>
+      <li><a id= "links" href="../static/About.html" >About</a></li>
+      <li><a id = "active" href="../templates/ViewFlights.html">View Flights</a></li>
+      <li><a id = "links" href="../static/ViewReservationsNoUser.html">View Reservations</a></li>
+      <li><a id = "links" href="../templates/SearchFlight.html">Search Flight</a></li>
+      <input class = "button" type="submit" value="Login" name="login" onclick="form.action='../templates/LoginForm.html'" />
+    </ul>
+  </div>
+</nav>
+
+<form>
+  <center><h1>Filtre Results </h1></center><br>
+  <div class="formcontainer">
+    <b>Please login to book flights. If you don't have an account sign up today.</b>
+    <!-- <div id="signup"><button onclick="form.action='RegistrationForm.html'"> SignUp </button></div> -->
+    <hr/>
+    <div class="container">
+      <table>
+        <thead>
+        <tr>
+          <th> Flight No </th>
+          <th> Flight Name </th>
+          <th> From City </th>
+          <th> To City </th>
+          <th> Departure Date </th>
+          <th> Departure Time </th>
+          <th> Duration </th>
+          <th> First Class Price </th>
+          <th> Business Class Price </th>
+          <th> Economy Class Price </th>
+          <th> Premium Economy Class Price </th>
+        </tr>
+
+        <tbody>
+        <tr th:if="${filter}" th:each="filterFlights : ${filter}">
+          <td th:text="${filter.flightID}"></td>
+          <td th:text="${filter.flightName}"></td>
+          <td th:text="${filter.fromCity}"></td>
+          <td th:text="${filter.toCity}"></td>
+          <td th:text="${filter.departureDate}"></td>
+          <td th:text="${filter.departureTime}"></td>
+          <td th:text="${filter.duration}"></td>
+          <td th:text="${filter.firstPrice}"></td>
+          <td th:text="${filter.businessPrice}"></td>
+          <td th:text="${filter.economyPrice}"></td>
+          <td th:text="${filter.premiumEconomyPrice}"></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</form>
+</body>
