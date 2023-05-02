@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title> Edit Flight </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
+    <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Aclonica&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+
+    <!-- Linking the CSS page -->
+    <link rel="stylesheet" href="../static/CSS/AddFlight.css">
+
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="title"><h2>JetEase Airline</h2></div>
+
+        <a href="#" class="toggle-button">
+            <span class="bars"></span>
+            <span class="bars"></span>
+            <span class="bars"></span>
+        </a>
+
+        <div class="navlinks">
+            <ul>
+                <li><a id = "links" href="../static/AdminDashboard.html">Home</a></li>
+                <li><a id = "active" href="ViewFlightsAdmin.html">All Flights</a></li>
+                <li><a id = "links" href="AddFlight.html" >Add Flight</a></li>
+                <li><a id = "links" href="ViewAllReservations.html" >All Reservations</a></li>
+                <button name="logout" th:action="@{/Logout}"/> Logout </button>
+            </ul>
+        </div>
+    </nav>
+
+    <form action="#" th:action="@{/editFlight}" th:each="getFlight : ${result}" method="post">
+        <h1> Edit Flight </h1>
+        <div class="formcontainer">
+            <hr/>
+            <div class="container">
+                <label><strong>Flight No*</strong></label>
+                <input type="text" name="flightID" th:value="${result.flightID}">
+                <label><strong>Flight Name*</strong></label>
+                <input type="text" name="flightName" th:value="${result.flightName}">
+                <label><strong>From City*</strong></label>
+                <input type="text" name="fromCity" th:value="${result.fromCity}">
+                <label><strong>To City*</strong></label>
+                <input type="text" name="toCity" th:value="${result.toCity}">
+                <label><strong>Departure Date*</strong></label>
+                <input type="Date" name="departureDate" th:value="${result.departureDate}">
+                <label><strong>Departure Time*</strong></label>
+                <input type="text" name="departureTime" th:value="${result.departureTime}">
+                <label><strong>Travel Duration*</strong></label>
+                <input type="text" name="duration" th:value="${result.duration}">
+                <label><strong>Ticket Price(Rs)*</strong></label>
+                <input type="text" name="economyPrice" th:value="${result.economyPrice}">
+                <input type="text" name="premiumEconomyPrice" th:value="${result.premiumEconomyPrice}">
+                <input type="text" name="businessPrice" th:value="${result.businessPrice}" >
+                <input type="text" name="firstPrice" th:value="${result.firstPrice}">
+            </div>
+
+            <center> <input type="submit" value="Update Flight" name="edit" /></center>
+        </div>
+    </form>
+</body>
+</html>

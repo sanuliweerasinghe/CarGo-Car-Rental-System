@@ -44,4 +44,11 @@ public class FlightsService
         iFlightsRepository.deleteByFlightIDAndDepartureDate(flightID, departureDate);
     }
 
+    // Method to update the flight record
+    public void updateFlight(Flights flight)
+    {
+        // Saving the flight object using the save() method of crudRepository
+        iFlightsRepository.save(flight);
+    }
+
 }

@@ -194,4 +194,44 @@ public class FlightsController
 
         return "redirect:/ViewFlightsAdmin";
     }
+
+    // ----------------------- Method for editing flights by flightID and departureDate ---------------------
+
+    @GetMapping("/editFlight")
+    public String editFlight(@RequestParam("flightID") int flightID, Model model)
+    {
+        // Creating an Optional container to hold flight records if returned
+        Optional<Flights> getFlight = iFlightsRepository.findById(flightID);
+
+        // If there are flights which matches the searching criteria
+        if (getFlight.isPresent())
+        {
+            // Pass the flight object to the view
+            model.addAttribute("result", getFlight.get());
+
+            return "EditFlight";
+        }
+
+        // If there's no flights which matches the searching criteria
+        else
+        {
+            return "redirect:/ViewFlightsAdmin";
+        }
+    }
+
+    @PostMapping("/editFlight")
+    public String updateFlight(@ModelAttribute("editFlight") Flights flight, BindingResult result, Model model)
+    {
+        // checking if there are any errors in the result object.
+        if (result.hasErrors())
+        {
+            // Handle errors
+        }
+
+        // Calling the method in FlightService to update the flight record
+        flightsService.updateFlight(flight);
+
+        // Redirect to the flights list page
+        return "redirect:/ViewFlightsAdmin";
+    }
 }
