@@ -28,11 +28,11 @@
 
         <div class="navlinks">
             <ul>
-                <li><a id = "links" href="../static/UserDashboard.html">Home</a></li>
+                <li><a id = "links" href="UserDashboard.html">Home</a></li>
                 <li><a id = "active" href="../templates/ViewFlightsUser.html">View Flights</a></li>
-                <li><a id = "links" href="../templates/ViewReservations.html" >My Reservations</a></li>
+                <li><a id = "links" href="ViewUserReservations.html" >My Reservations</a></li>
                 <li><a id = "links" href="" >My Account</a></li>
-                <input class = "button" type="submit" value="Logout" name="logout" onclick="form.action='logoutServlet'" />
+                <input class = "button" type="submit" value="Logout" name="logout" th:action="@{/Logout}"/>
             </ul>
         </div>
     </nav>

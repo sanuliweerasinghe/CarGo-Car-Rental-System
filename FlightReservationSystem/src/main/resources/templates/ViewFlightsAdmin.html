@@ -27,11 +27,11 @@
 
         <div class="navlinks">
             <ul>
-                <li><a id = "links" href="../static/AdminDashboard.html">Home</a></li>
+                <li><a id = "links" href="AdminDashboard.html">Home</a></li>
                 <li><a id = "active" href="../templates/ViewFlightsAdmin.html">All Flights</a></li>
                 <li><a id = "links" href="../templates/AddFlight.html" >Add Flight</a></li>
-                <li><a id = "links" href="" >All Reservations</a></li>
-                <input class = "button" type="submit" value="Logout" name="logout" onclick="form.action='logout'" />
+                <li><a id = "links" href="../templates/ViewAllReservations.html">All Reservations</a></li>
+                <input class = "button" type="submit" value="Logout" name="logout" th:action="@{/Logout}"/>
             </ul>
         </div>
     </nav>
