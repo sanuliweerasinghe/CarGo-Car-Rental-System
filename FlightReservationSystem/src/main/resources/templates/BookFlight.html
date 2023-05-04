@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Book Flight </title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
+    <!-- Linking the CSS page -->
+    <link rel="stylesheet" href="../static/CSS/BookFlight.css">
+
+</head>
+
+<body>
+    <form action="#" th:action="@{/BookFlight}" method="post">
+        <div class="formcontainer">
+            <p> Please check the below details of the flight you've booked before confirming your reservation!</p>
+            <div class="container">
+                <table>
+                    <thead>
+                    <tr>
+                        <th> Flight No </th>
+                        <th> Flight Name </th>
+                        <th> From City </th>
+                        <th> To City </th>
+                        <th> Departure Date </th>
+                        <th> Departure Time </th>
+                        <th> Duration </th>
+                    </tr>
+
+                    <tbody>
+                    <tr th:each="getFlight : ${bookedFlight}">
+                        <td th:text="${bookedFlight.flightID}"></td>
+                        <td th:text="${bookedFlight.flightName}"></td>
+                        <td th:text="${bookedFlight.fromCity}"></td>
+                        <td th:text="${bookedFlight.toCity}"></td>
+                        <td th:text="${bookedFlight.departureDate}"></td>
+                        <td th:text="${bookedFlight.departureTime}"></td>
+                        <td th:text="${bookedFlight.duration}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <h1> Book your Flight </h1>
+        <div class="formcontainer">
+            <hr/>
+            <div class="container">
+
+                <!-- Passing the values of hidden fields -->
+                <input type="hidden" name="flightID" th:value="${bookedFlight.flightID}">
+                <input type="hidden" name="departureDate" th:value="${bookedFlight.departureDate}">
+                <input type="hidden" name="username" th:value="${username}">
+                <input type="hidden" name="bookingDate" th:value="${bookingDate}">
+
+                <!-- Getting the user inputs for the booking details -->
+                <label><strong>Mobile No*</strong></label>
+                <input type="text" placeholder="Enter Mobile Number" name="mobile" maxlength="10" required>
+                <label for="cabinClass"><strong>Cabin Class*</strong></label><br>
+                <select name="cabinClass" id="cabinClass">
+                    <option value="Select">Select</option>
+                    <option value="First">First</option>
+                    <option value="Business">Business</option>
+                    <option value="Economy">Economy</option>
+                    <option value="Premium Economy">Premium Economy</option>
+                </select><br>
+                <label><strong>No. of Passengers*</strong></label>
+                <input type="number" name="noOfPassengers" step="1" min="0" placeholder= "0" required>
+
+                <!-- Passing the ticket prices for the calculation of the payment for the booking -->
+                <input type="hidden" name="economyPrice" th:attr="value=${bookedFlight.economyPrice}">
+                <input type="hidden" name="premiumEconomyPrice" th:attr="value=${bookedFlight.premiumEconomyPrice}">
+                <input type="hidden" name="businessPrice" th:attr="value=${bookedFlight.businessPrice}">
+                <input type="hidden" name="firstPrice" th:attr="value=${bookedFlight.firstPrice}">
+            </div>
+        </div>
+
+        <center>
+            <input type="submit" value="Book" name="ConfirmBooking" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="reset" value="Cancel" name="cancel" />
+        </center>
+    </form>
+</body>
+</html>
