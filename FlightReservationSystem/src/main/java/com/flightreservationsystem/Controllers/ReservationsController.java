@@ -119,4 +119,32 @@ public class ReservationsController
 
         return "Payment";
     }
+
+    // --------------------------------- Methods to View Reservations-----------------------------------------
+
+    // Method to view the reservations of the logged in user
+    @GetMapping("/ViewReservations")
+    public String viewReservations(Model model, HttpSession session)
+    {
+        // Getting the username of the logged in user through the session object
+        String username = (String) session.getAttribute("username");
+
+        // Creating a list to get the reservations of the user logged in
+        List<Reservations> reservations = reservationsService.getReservationByUsername(username);
+
+        // Passing the returned list as a thymeleaf object to ViewUserReservations.html
+        model.addAttribute("reservations", reservations);
+
+        return "ViewUserReservations";
+    }
+
+    // Method to view all records of reservations table by Admin user
+    @GetMapping("/ViewAllReservations")
+    public String viewFlightsForAdmin(Model model)
+    {
+        List<Reservations> allReservations = iReservationsRepository.findAll();
+        model.addAttribute("allReservations", allReservations);
+
+        return "ViewAllReservations";
+    }
 }
