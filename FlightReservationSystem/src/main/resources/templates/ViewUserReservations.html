@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title> View Reservations </title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
+    <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Aclonica&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+
+    <!-- Linking the CSS page -
+    <link rel="stylesheet" href="../static/CSS/ViewFlights.css"> -->
+    <link rel="stylesheet" type="text/css" th:href="@{/static/CSS/ViewFlights.css}">
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="title"><h2>JetEase Airline</h2></div>
+
+        <a href="#" class="toggle-button">
+            <span class="bars"></span>
+            <span class="bars"></span>
+            <span class="bars"></span>
+        </a>
+
+        <div class="navlinks">
+            <ul>
+                <li><a id = "links" href="UserDashboard.html">Home</a></li>
+                <li><a id = "links" href="../templates/ViewFlightsUser.html">View Flights</a></li>
+                <li><a id = "active" href="../templates/ViewUserReservations.html" >My Reservations</a></li>
+                <li><a id = "links" href="" >My Account</a></li>
+                <input class = "button" type="submit" value="Logout" name="logout" th:action="@{/Logout}" />
+            </ul>
+        </div>
+    </nav>
+
+    <form style="width: 1300px">
+        <center><h1> My Reservations </h1></center><br>
+        <div class="formcontainer">
+            <hr/>
+            <div class="container">
+                <table>
+                    <thead>
+                    <tr>
+                        <th> Booking ID </th>
+                        <th> Flight No </th>
+                        <th> Departure Date </th>
+                        <th> Mobile No </th>
+                        <th> Booking Date </th>
+                        <th> Cabin Class </th>
+                        <th> No of Passengers </th>
+                    </tr>
+
+                    <tbody>
+                    <tr th:each="reservations : ${reservations}">
+                        <td th:text="${reservations.bookingID}"></td>
+                        <td th:text="${reservations.flightID}"></td>
+                        <td th:text="${reservations.departureDate}"></td>
+                        <td th:text="${reservations.mobile}"></td>
+                        <td th:text="${reservations.bookingDate}"></td>
+                        <td th:text="${reservations.cabinClass}"></td>
+                        <td th:text="${reservations.noOfPassengers}"></td>
+                        <td> <button> <a th:href="@{/CancelBooking(bookingID=${reservations.bookingID})}">Cancel</a> </button></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
