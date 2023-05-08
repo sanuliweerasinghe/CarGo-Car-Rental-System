@@ -142,9 +142,32 @@ public class ReservationsController
     @GetMapping("/ViewAllReservations")
     public String viewFlightsForAdmin(Model model)
     {
+        // Creating a list to get all reservations from the reservations table
         List<Reservations> allReservations = iReservationsRepository.findAll();
+
+        // Passing the returned list as a thymeleaf object to ViewAllReservations.html
         model.addAttribute("allReservations", allReservations);
 
         return "ViewAllReservations";
+    }
+
+    // --------------------------------- Methods to Cancel Reservations-----------------------------------------
+
+    @GetMapping("/CancelBooking")
+    public String cancelBooking(@RequestParam("bookingID") int bookingID, Model model)
+    {
+        // Creating a thymeleaf object to get the bookingID of the cancellation
+        model.addAttribute("bookingID", bookingID);
+
+        return "CancelBooking";
+    }
+
+    @PostMapping("/CancelBooking")
+    public String confirmCancellation(@RequestParam("bookingID") int bookingID)
+    {
+        // Invoking the deleteById() of CrudRepository to delete the user reservation using the bookingID
+        iReservationsRepository.deleteById(bookingID);
+
+        return "redirect:/ViewReservations";
     }
 }
