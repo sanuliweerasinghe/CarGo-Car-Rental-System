@@ -1,19 +1,33 @@
-html, body {
-    display: flex;
-    justify-content: center;
-    font-size: 15px;
-}
-body{
+body {
     background-image: url("../Images/background.jpg");
     background-size: 100%;
 }
+
 form {
     border: 5px solid #b8b894;
     background-color: #e6f3ff;
     height: 80%;
-    width: 60%;
+    width: 40%;
     margin-top: 100px;
+    margin-bottom: 50px; /* Add margin at the bottom */
+    margin-left: auto; /* Center the form horizontally */
+    margin-right: auto; /* Center the form horizontally */
 }
+
+.formcontainer {
+    text-align: left;
+    margin: 24px 50px 12px;
+}
+
+.container {
+    padding: 16px 0;
+    text-align: left;
+}
+
+.container label {
+    margin-bottom: 8px;
+}
+
 input[type=text], input[type=password] {
     width: 100%;
     padding: 16px 8px;
@@ -22,7 +36,8 @@ input[type=text], input[type=password] {
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
-input[type=submit]{
+
+input[type=submit], .create-account-button {
     background-color: #3366ff;
     color: white;
     padding: 14px 0;
@@ -30,31 +45,12 @@ input[type=submit]{
     border: 2px solid #001a33;
     cursor: grabbing;
     width: 40%;
+    text-align: center;
 }
+
 h1 {
-    text-align:center;
-    fone-size:18;
+    text-align: center;
+    font-size: 18px;
 }
-input[type=submit]:hover {
-    opacity: 0.8;
-}
-.formcontainer {
-    text-align: left;
-    margin: 24px 50px 12px;
-}
-.container {
-    padding: 16px 0;
-    text-align:left;
-}
-span.psw {
-    float: right;
-    padding-top: 0;
-    padding-right: 15px;
-}
-/* Change styles for span on extra small screens */
-@media screen and (max-width: 300px) {
-    span.psw {
-        display: block;
-        float: none;
-    }
-}
+
+input[type=submit]:hover, .create-account-button:hover
