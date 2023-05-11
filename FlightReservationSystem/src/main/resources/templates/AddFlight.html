@@ -28,7 +28,7 @@
 
             <div class="navlinks">
                 <ul>
-                    <li><a id = "links" href="AdminDashboard.html">Home</a></li>
+                    <li><a id = "links" href="../static/AdminDashboard.html">Home</a></li>
                     <li><a id = "links" href="http://localhost:8080/ViewFlightsAdmin">All Flights</a></li>
                     <li><a id = "active" href="http://localhost:8080/AddFlight">Add Flight</a></li>
                     <li><a id = "links" href="http://localhost:8080/ViewAllReservations" >All Reservations</a></li>
@@ -50,7 +50,7 @@
                     <input type="text" placeholder="Enter From City" name="fromCity" required th:field="*{fromCity}">
                     <label for="toCity"><strong>To City*</strong></label>
                     <input type="text" placeholder="Enter To City" name="toCity" required th:field="*{toCity}">
-                    <label for="departureDate"><strong>Departure Date*</strong></label>
+                    <label for="date"><strong>Departure Date*</strong></label>
                     <input type="date" id="date" name="departureDate" required th:field="*{departureDate}">
                     <label for="time"><strong>Departure Time*</strong></label>
                     <input type="text" placeholder="Enter Departure Time" name="time" required th:field="*{departureTime}">
@@ -66,7 +66,7 @@
                 <script th:inline="javascript">
                     function showAlert() {
                         alert('New Flight Information Added Successfully!!!');
-                        window.location.href = '/templates/ViewFlights.html';
+                        window.location.href = 'ViewFlightsAdmin.html';
                     }
                 </script>
 

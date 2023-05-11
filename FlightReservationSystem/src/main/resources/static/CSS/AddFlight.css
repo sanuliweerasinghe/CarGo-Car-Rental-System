@@ -4,7 +4,7 @@ html, body {
     font-size: 15px;
 }
 body {
-    background-image: url("static/Images/background.jpg");
+    background-image: url("../Images/background.jpg");
     background-size: 100%;
 }
 form {
@@ -31,6 +31,26 @@ input[type=submit], input[type=reset]{
     cursor: grabbing;
     width: 35%;
 }
+button {
+    background-color: #ccebff;
+    color: black;
+    border: 3px solid #008CBA;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.2s;
+    cursor: pointer;
+    font-weight: bold;
+}
+button:hover {
+    opacity: 0.8;
+    background-color: #008CBA;
+    color: white;
+    border: 3px solid #ccebff;
+}
 #logout{
     width: 20%;
 }
@@ -38,10 +58,7 @@ h1 {
     text-align:center;
     fone-size:18;
 }
-input[type=submit]:hover {
-    opacity: 0.8;
-}
-input[type=reset]:hover {
+input[type=submit]:hover, input[type=reset]:hover {
     opacity: 0.8;
 }
 .formcontainer {
