@@ -4,7 +4,7 @@ html, body {
     font-size: 15px;
 }
 body{
-    background-image: url("static/Images/background.jpg");
+    background-image: url("../Images/background.jpg");
     background-size: 100%;
 }
 .textBox{
