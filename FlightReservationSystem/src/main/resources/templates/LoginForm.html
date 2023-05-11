@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>Login</title>
-        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+<head>
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
 
-        <!-- Linking the CSS page -->
-        <link rel="stylesheet" href="../static/CSS/LoginForm.css">
+    <!-- Linking the CSS page -->
+    <link rel="stylesheet" href="../static/CSS/LoginForm.css">
 
-    </head>
-  
-    <body>
-        <form name = "loginForm" action="#" th:action="@{/LoginForm}" th:object="${login}" method ="post">
-            <h1> Login Form </h1>
-            <div class="formcontainer">
-                <hr/>
+</head>
 
-                <div class="container">
+<body>
+<form name="loginForm" action="#" th:action="@{/LoginForm}" th:object="${login}" method="post">
+    <h1>Login Form</h1>
+    <div class="formcontainer">
+        <hr/>
 
-                    <div th:if="${errorMsg}">
-                        <font color="red"> <p th:text="${errorMsg}" class="error-message"></p> </font>
-                    </div>
+        <div class="container">
 
-                    <label><strong>Username</strong></label>
-                    <input type="text" placeholder="Enter Username" name="username" th:field="*{username}" required>
-                    <label><strong>Password</strong></label>
-                    <input type="password" placeholder="Enter Password" name="password" th:field="*{password}" required>
-
-                </div>
-
-                <center>
-                  <input type="submit" value="Login" name="login"/> &nbsp;&nbsp;&nbsp;&nbsp;
-                  <input type="submit" value="Create Account" name="createAccount" onclick="form.action='RegistrationForm.html'">
-                </center>
+            <div th:if="${errorMsg}">
+                <font color="red"> <p th:text="${errorMsg}" class="error-message"></p> </font>
             </div>
-        </form>
-    </body>
+
+            <label><strong>Username</strong></label>
+            <input type="text" placeholder="Enter Username" name="username" th:field="*{username}" required>
+            <label><strong>Password</strong></label>
+            <input type="password" placeholder="Enter Password" name="password" th:field="*{password}" required>
+
+        </div>
+
+        <center>
+            <input type="submit" value="Login" name="login"/> &nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="button" value="Create Account" onclick="window.location.href='RegistrationForm.html'" class="create-account-button">
+        </center>
+    </div>
+</form>
+</body>
 </html>
