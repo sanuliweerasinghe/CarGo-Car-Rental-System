@@ -1,0 +1,144 @@
+body, html {
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #000000;
+}
+.title h2{
+    color: #a6d8ff;
+    margin: .2rem;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 28px;
+}
+.navbar{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 8vh;
+    background-color:#011a2b;
+    opacity: 0.8;
+    font-family: 'Poppins',sans-serif;
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+}
+.navlinks ul{
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+.navlinks li a{
+    color: rgb(252, 252, 252);
+    text-decoration: none ;
+    font-size: 16px;
+    padding: 14px 16px;
+    display: block;
+    float: right;
+    align-items: center;
+}
+.navlinks li{
+    list-style: none;
+    display: inline;
+    padding-right: 60px;
+}
+.navlinks li:hover{
+    color:#84b7f5;
+}
+.toggle-button{
+    position: absolute;
+    top: 0.75rem;
+    right: 1rem;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width:30px;
+    height:21px;
+}
+.toggle-button .bars{
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+@media (max-width: 600px){
+    .toggle-button{
+        display: flex;
+    }
+    .navlinks{
+        display: none;
+        width: 100%;
+    }
+    .navbar{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .navlinks ul{
+        width: 100%;
+        flex-direction: column;
+    }
+    .navlinks li{
+        text-align: center;
+        padding: .50% 50%;
+    }
+    .navlinks li a{
+        padding: .5rem 1rem;
+    }
+    .navlinks.active{
+        display: flex;
+    }
+}
+.button {
+    background-color: #ccebff;
+    color: black;
+    border: 3px solid #008CBA;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.2s;
+    cursor: pointer;
+    font-weight: bold;
+}
+.button:hover {
+    background-color: #008CBA;
+    color: white;
+    border: 3px solid #ccebff;
+}
+@media screen and (max-width: 600px) {
+    .navlinks .login-container {
+
+        float: none;
+        display: block;
+        text-align: left;
+        width: 100%;
+        margin: 0;
+        padding: 14px;
+    }
+}
+.bg-img {
+    background-image: url("../Images/plane.png");
+    font-family: 'Times New Roman', Times, serif;
+    height: 700px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+#links:hover{
+    color: #0099ff;
+}
+.div1 {
+    position: absolute;
+    bottom: 400px;
+    left: 150px;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 40px;
+    top: 100px;
+    font-weight: bold;
+}
+#active {
+    background-color: #84b7f5;
+}
