@@ -48,7 +48,7 @@
             <h2 class = "searchBar">Search Flight by the Flight ID</h2>
             <center>
                 <input class ="textDec" type="text" name="flightID" placeholder="Enter Flight ID" th:field="*{flightID}"/>
-                <input class= "button" type="submit" value="Search" name="search" th:action="@{/SearchFlight}"/>
+                <input class= "button" type="submit" value="Search" name="search" onclick="form.action='http://localhost:8080/SearchFlight'"/>
             </center>
         </div>
         
@@ -64,7 +64,7 @@
                     <input class = "textBox" type="text" placeholder="Enter Destination" name="toCity" th:field="*{toCity}">
                 </div>
                 <center>
-                    <input class = "submit" type="submit" value="Filtre" name="flitre" th:action="@{/FiltreFlight}"/>
+                    <input class = "submit" type="submit" value="Filtre" name="flitre" onclick="form.action='http://localhost:8080/FiltreFlight'"/>
                 </center>
           </div>
         </div>
