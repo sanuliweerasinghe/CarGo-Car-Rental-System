@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+  <title>No Search Results</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
+    <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Aclonica&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+
+  <!-- Linking the CSS page -->
+  <link rel="stylesheet" href="../static/CSS/NoReservations.css">
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="title"><h2>JetEase Airline</h2></div>
+
+        <a href="#" class="toggle-button">
+            <span class="bars"></span>
+            <span class="bars"></span>
+            <span class="bars"></span>
+        </a>
+
+        <div class="navlinks">
+            <ul>
+                <li><a id= "links" href="Home.html">Home</a></li>
+                <li><a id= "links" href="About.html" >About</a></li>
+                <li><a id = "links" href="../templates/ViewFlights.html">View Flights</a></li>
+                <li><a id = "active" href="ViewReservationsNoUser.html">Reservations</a></li>
+                <li><a id = "links" href="../templates/SearchFlight.html">Search Flight</a></li>
+                <input class = "button" type="submit" value="Login" name="login" onclick="form.action='../templates/LoginForm.html'" />
+            </ul>
+        </div>
+    </nav>
+
+    <form method ="post">
+        <h1> No Reservations </h1>
+        <div class="formcontainer">
+            <hr/>
+            <div class="container">
+                <center>
+                    Please login to view your reservations.<br>If you don't have an account, sign up today and start booking your seats with us.<br><br>
+                <button onclick="form.action='RegistrationForm.html'"> Sign Up </button>
+                </center>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
