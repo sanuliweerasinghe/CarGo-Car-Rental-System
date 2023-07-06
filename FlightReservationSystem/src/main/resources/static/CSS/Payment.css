@@ -1,0 +1,56 @@
+body {
+    background-image: url("../Images/background.jpg");
+    background-size: 100%;
+}
+
+form {
+    border: 5px solid #b8b894;
+    background-color: #e6f3ff;
+    height: 80%;
+    width: 40%;
+    margin-top: 100px;
+    margin-bottom: 50px; /* Add margin at the bottom */
+    margin-left: auto; /* Center the form horizontally */
+    margin-right: auto; /* Center the form horizontally */
+}
+
+.formcontainer {
+    text-align: left;
+    margin: 24px 50px 12px;
+}
+
+.container {
+    padding: 16px 0;
+    text-align: left;
+}
+
+.container label {
+    margin-bottom: 8px;
+}
+
+input[type=text], input[type=date] {
+    width: 100%;
+    padding: 16px 8px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+input[type=submit], .book-button {
+    background-color: #3366ff;
+    color: white;
+    padding: 14px 0;
+    margin: 10px 0;
+    border: 2px solid #001a33;
+    cursor: grabbing;
+    width: 40%;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    font-size: 25px;
+}
+
+input[type=submit]:hover, .book-button:hover
