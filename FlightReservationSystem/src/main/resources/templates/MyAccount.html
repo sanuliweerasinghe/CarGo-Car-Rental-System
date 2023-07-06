@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
 
     <!-- Linking the CSS page -->
-    <link rel="stylesheet" href="../static/CSS/ViewFlights.css">
+    <link rel="stylesheet" href="../static/CSS/MyAccount.css">
 </head>
 
 <body>
@@ -30,13 +30,16 @@
             <li><a id = "links" href="UserDashboard.html">Home</a></li>
             <li><a id = "links" href="http://localhost:8080/ViewFlightsUser">Book Flights</a></li>
             <li><a id = "links" href="http://localhost:8080//ViewReservations">My Reservations</a></li>
-            <li><a id = "active" href="" >My Account</a></li>
+            <li><a id = "active" href="MyAccount.html" >My Account</a></li>
             <input class = "button" type="submit" value="Logout" name="logout" th:action="@{/Logout}" />
         </ul>
     </div>
 </nav>
 <form>
-    <center><h1>My Account Information </h1></center><br>
+    <center>
+        <h1>My Account Information </h1>
+        <br><br><br>
+    </center>
     <div class="formcontainer">
         <hr/>
         <div class="container">
@@ -44,12 +47,13 @@
                 <thead>
                 <tr>
                     <th> First Name </th>
+                    <br>
                     <th> Last Name </th>
                     <th> Mobile </th>
                     <th> Email </th>
                     <th> Username</th>
-
                 </tr>
+
                 <tbody>
                 <tr th:each="myAccount : ${myAccount}">
                     <td th:text="${myAccount.firstName}"></td>
