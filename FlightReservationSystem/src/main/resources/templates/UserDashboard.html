@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">>
+    <head>
+        <title> Dashboard </title>
+        <meta charset="UTF-8">
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
+        <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Aclonica&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+
+        <!-- Linking the CSS page -->
+        <link rel="stylesheet" href="../static/CSS/UserDashboard.css">
+
+    </head>
+<body>
+    <form method="post">
+        <nav class="navbar">
+
+            <div class="title"><h2>JetEase Airline</h2></div>
+
+            <a href="#" class="toggle-button">
+                <span class="bars"></span>
+                <span class="bars"></span>
+                <span class="bars"></span>
+            </a>
+
+            <div class="navlinks">
+                <ul>
+                    <li><a id = "active" href="UserDashboard.html">Home</a></li>
+                    <li><a id = "links" href="http://localhost:8080/ViewFlightsUser">Book Flights</a></li>
+                    <li><a id = "links" href="http://localhost:8080//ViewReservations" >My Reservations</a></li>
+                    <li><a id = "links" href="" >My Account</a></li>
+                    <input class = "button" type="submit" value="Logout" name="logout" th:action="@{/Logout}"/>
+                </ul>
+            </div>
+        </nav>
+
+      <div class="bg-img">
+        <div class="div1">Welcome to User Dashboard</div>
+      </div>
+    </form>
+</body>
+</html>
