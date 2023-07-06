@@ -15,7 +15,7 @@ public class UsersService
     @Autowired
     IUsersRepository iUsersRepository;
 
-    //getting all flights record by using the method findAll() of CrudRepository
+    //getting all users by using the method findAll() of CrudRepository
     public List<Users> getAllUsers()
     {
         List<Users> users = new ArrayList<Users>();
