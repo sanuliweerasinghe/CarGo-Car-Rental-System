@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Payment</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
+    <!--Linking the CSS page -->
+    <link rel="stylesheet" href="../static/CSS/Payment.css">
+</head>
+
+<body>
+
+<form action="#" th:action="@{/Payment}" th:object="${payment}" method="post">
+    <h1> Add Payment </h1>
+    <div class="formcontainer">
+        <hr/>
+        <div class="container">
+
+            <div th:if="${errorMsg}">
+                <font color="red"> <p th:text="${errorMsg}" class="error-message"></p> </font>
+            </div>
+
+            <label><strong>Payment No*</strong></label>
+            <input type="text" placeholder="Enter Payment No" name="paymentNo" th:field="*{paymentID}" required>
+
+            <label><strong>Payer Name*</strong></label>
+            <input type="text" placeholder="Enter Payer Name" name="payerName" th:field="*{payerName}" required>
+
+            <label><strong>Payment Type*</strong></label>
+            <input type="text" placeholder="Enter Payment Type" name="paymentType" th:field="*{paymentType}" required>
+
+            <label><strong>Pay Amount*</strong></label>
+            <input type="text" placeholder="Enter Pay Amount" name="payAmount" th:field="*{payAmount}" required>
+
+            <!--<label><strong>Pay Date*</strong></label>
+            <input type="text" placeholder="Enter Pay Date" name="payDate" th:field="*{payDate}" required> -->
+
+            <label><strong>Booking ID*</strong></label>
+            <input type="text" placeholder="Enter Booking ID" name="bookingID" th:field="*{bookingID}" required>
+
+            <!-- Passing the values of hidden fields -->
+            <input type="hidden" name="payDate" th:value="${payDate}">
+
+        </div>
+
+        <center>
+            <input type="submit" value="Book" name="book" class="book-button">
+        </center>
+    </div>
+</form>
+
+</body>
+</html>
