@@ -18,19 +18,13 @@ public class Registration
     private String email;
 
     @Column(name = "first_name")
-    private String firstname;
+    private String firstName;
 
     @Column(name = "last_name")
-    private String lastname;
+    private String lastName;
 
     @Column(name = "mobile")
-    private int mobile;
-
-    @Column(name = "Username")
-    private String username;
-
-    @Column(name = "Password")
-    private String password;
+    private int mobileNo ;
 
     //Getter for Email
     public String getEmail() {return email; }
@@ -42,39 +36,39 @@ public class Registration
     }
 
     //Getter for Firstname
-    public String getFirstname()
+    public String getFirstName()
     {
-        return firstname;
+        return firstName;
     }
 
     //Setter for Firstname
-    public void setFirstname(String firstname)
+    public void setFirstname(String firstName)
     {
-        this.firstname = firstname;
+        this.firstName = firstName;
     }
 
     //Getter for Lastname
-    public String getLastname()
+    public String getLastName()
     {
-        return lastname;
+        return lastName;
     }
 
     //Setter for Lastname
-    public void setLastname(String lastname)
+    public void setLastname(String lastName)
     {
-        this.lastname = lastname;
+        this.lastName = lastName;
     }
 
     //Getter for Mobile
-    public int getMobile()
+    public int getMobileNo()
     {
-        return mobile;
+        return mobileNo;
     }
 
     //Setter for mobile
-    public void setMobile(int mobile)
+    public void setMobile(int mobileNo)
     {
-        this.mobile= mobile;
+        this.mobileNo= mobileNo;
     }
 
 }
