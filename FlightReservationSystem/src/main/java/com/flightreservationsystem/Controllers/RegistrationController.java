@@ -1,7 +1,7 @@
 package com.flightreservationsystem.Controllers;
 
 import com.flightreservationsystem.Models.Registration;
-import com.flightreservationsystem.Repositories.IFlightsRepository;
+import com.flightreservationsystem.Repositories.IRegistrationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,10 +12,10 @@ import java.util.List;
 //Marking class as Controller
 @Controller
 public class RegistrationController {
-}
-    //autowire the FlightsRepository
+
+    //autowire the IRegistrationRepository
     @Autowired
-    IFlightsRepository iRegistrationRepository;
+    IRegistrationRepository iRegistrationRepository;
 
     // --------------------------------- Methods for adding new account ---------------------------------------
 
