@@ -116,7 +116,7 @@ public class Flights
     }
 
     //Setter for departureTime
-    public void setDepartureDate(BigDecimal departureTime)
+    public void setDepartureTime(BigDecimal departureTime)
     {
         this.departureTime = departureTime;
     }
