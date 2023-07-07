@@ -15,15 +15,7 @@
     <div class="formcontainer">
 
         <div class="container">
-            <table>
-                <tbody>
-                <tr th:each="getPayment : ${confirmedPayment}">
-
-                    <td th:text="${confirmedPayment.bookingID}"></td>
-
-                </tr>
-                </tbody>
-            </table>
+            <center><p>Your booking has been confirmed. Total price is Rs. <span th:text="${price}"></span>.0</p></center>
         </div>
     </div>
     <h1> Pay for your Reservation </h1>
