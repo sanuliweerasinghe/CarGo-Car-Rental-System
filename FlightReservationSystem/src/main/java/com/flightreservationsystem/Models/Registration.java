@@ -42,7 +42,7 @@ public class Registration
     }
 
     //Setter for Firstname
-    public void setFirstname(String firstName)
+    public void setFirstName(String firstName)
     {
         this.firstName = firstName;
     }
@@ -54,7 +54,7 @@ public class Registration
     }
 
     //Setter for Lastname
-    public void setLastname(String lastName)
+    public void setLastName(String lastName)
     {
         this.lastName = lastName;
     }
@@ -66,7 +66,7 @@ public class Registration
     }
 
     //Setter for mobile
-    public void setMobile(int mobileNo)
+    public void setMobileNo(int mobileNo)
     {
         this.mobileNo= mobileNo;
     }
