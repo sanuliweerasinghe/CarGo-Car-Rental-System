@@ -17,26 +17,6 @@
 </head>
 
 <body>
-    <nav class="navbar">
-        <div class="title"><h2>JetEase Airline</h2></div>
-
-        <a href="#" class="toggle-button">
-            <span class="bars"></span>
-            <span class="bars"></span>
-            <span class="bars"></span>
-        </a>
-
-        <div class="navlinks">
-            <ul>
-                <li><a id = "links" href="../static/AdminDashboard.html">Home</a></li>
-                <li><a id = "active" href="ViewFlightsAdmin.html">All Flights</a></li>
-                <li><a id = "links" href="AddFlight.html" >Add Flight</a></li>
-                <li><a id = "links" href="ViewAllReservations.html" >All Reservations</a></li>
-                <button name="logout" th:action="@{/Logout}"/> Logout </button>
-            </ul>
-        </div>
-    </nav>
-
     <form action="#" th:action="@{/editFlight}" th:each="getFlight : ${result}" method="post">
         <h1> Edit Flight </h1>
         <div class="formcontainer">
