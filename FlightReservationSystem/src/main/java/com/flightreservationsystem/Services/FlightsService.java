@@ -3,12 +3,13 @@ package com.flightreservationsystem.Services;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import com.flightreservationsystem.Models.Flights;
 import com.flightreservationsystem.Repositories.IFlightsRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import javax.transaction.Transactional;
 
 
 //defining the business logic
@@ -49,6 +50,13 @@ public class FlightsService
     {
         // Saving the flight object using the save() method of crudRepository
         iFlightsRepository.save(flight);
+    }
+
+    // Getting the record of the booked flight
+    public Optional<Flights> getFlightByFlightIdAndDepartureDate(int flightID, Date departureDate)
+    {
+        Optional<Flights> flightResult = iFlightsRepository.findByFlightIDAndDepartureDate(flightID, departureDate);
+        return flightResult;
     }
 
 }
