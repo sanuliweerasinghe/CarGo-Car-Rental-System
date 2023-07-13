@@ -1,7 +1,7 @@
 package com.flightreservationsystem.Services;
 
 import com.flightreservationsystem.Models.Users;
-import com.flightreservationsystem.Repositories.IUsersRepository
+import com.flightreservationsystem.Repositories.IUsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
