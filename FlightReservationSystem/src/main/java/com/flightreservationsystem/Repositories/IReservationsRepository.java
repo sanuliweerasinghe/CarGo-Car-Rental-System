@@ -15,4 +15,7 @@ public interface IReservationsRepository extends CrudRepository<Reservations, In
 
     // Method to retrieve  all records of reservations table
     List<Reservations> findAll();
+
+    // Method to get the bookingID of the latest booking of the logged in user
+    Optional<Reservations> findByUsernameAndBookingDate(String username, Date bookingDate);
 }
