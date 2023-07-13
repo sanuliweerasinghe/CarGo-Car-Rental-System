@@ -18,10 +18,6 @@
 
         <div class="container">
 
-            <div th:if="${errorMsg}">
-                <font color="red"> <p th:text="${errorMsg}" class="error-message"></p> </font>
-            </div>
-
             <label><strong>First Name</strong></label>
             <input type="text" placeholder="Enter First Name" name="firstName" th:field="*{firstName}" required>
 
@@ -29,7 +25,7 @@
             <input type="text" placeholder="Enter Last Name" name="lastName" th:field="*{lastName}" required>
 
             <label><strong>Mobile No</strong></label>
-            <input type="text" placeholder="Enter Mobile Number" name="mobileNo" th:field="*{mobileNo}" required>
+            <input type="text" placeholder="Enter Mobile Number" name="mobile" th:field="*{mobile}" required>
 
             <label><strong>Email</strong></label>
             <input type="text" placeholder="Enter Email" name="email" th:field="*{email}" required>
