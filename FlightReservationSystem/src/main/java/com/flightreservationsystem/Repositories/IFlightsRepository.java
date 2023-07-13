@@ -1,12 +1,12 @@
 package com.flightreservationsystem.Repositories;
 
 import com.flightreservationsystem.Models.Flights;
+import jakarta.transaction.Transactional;
 import org.springframework.data.repository.CrudRepository;
 
 import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
-import javax.transaction.Transactional;
 
 public interface IFlightsRepository extends CrudRepository<Flights, Integer>
 {
@@ -19,4 +19,7 @@ public interface IFlightsRepository extends CrudRepository<Flights, Integer>
     // Method to delete the flight record from the flights table using flightID and departureDate
     @Transactional
     public void deleteByFlightIDAndDepartureDate(int flightID, Date departureDate);
+
+    // Method to get the record of the flight booked
+    Optional<Flights> findByFlightIDAndDepartureDate(int flightID, Date departureDate);
 }
