@@ -28,10 +28,10 @@ public class Payments
     private float payAmount;
 
     @Column(name = "booking_id")
-    private int bookingID;
+    private String bookingID;
 
     @Column(name = "pay_date")
-    private Date payDate;
+    private String payDate;
 
 
     //Getter for PaymentID
@@ -83,25 +83,25 @@ public class Payments
     }
 
     //Getter for BookingID
-    public int getBookingID()
+    public String getBookingID()
     {
         return bookingID;
     }
 
     //Setter for bookingID
-    public void setBookingID(int bookingID)
+    public void setBookingID(String bookingID)
     {
         this.bookingID = bookingID;
     }
 
     //Getter for PayDate
-    public Date getPayDate()
+    public String getPayDate()
     {
         return payDate;
     }
 
     //Setter for payDate
-    public void setPayDate(Date payDate)
+    public void setPayDate(String payDate)
     {
         this.payDate = payDate;
     }
