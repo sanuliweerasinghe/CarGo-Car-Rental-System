@@ -47,7 +47,6 @@
                 <thead>
                 <tr>
                     <th> First Name </th>
-                    <br>
                     <th> Last Name </th>
                     <th> Mobile </th>
                     <th> Email </th>
@@ -55,12 +54,12 @@
                 </tr>
 
                 <tbody>
-                <tr th:each="myAccount : ${myAccount}">
-                    <td th:text="${myAccount.firstName}"></td>
-                    <td th:text="${myAccount.lastName}"></td>
-                    <td th:text="${myAccount.mobileNo}"></td>
-                    <td th:text="${myAccount.email}"></td>
-                    <td th:text="${myAccount.username}"></td>
+                <tr th:each="getAccountDetails : ${getAccountDetails}">
+                    <td th:text="${getAccountDetails.firstName}"></td>
+                    <td th:text="${getAccountDetails.lastName}"></td>
+                    <td th:text="${getAccountDetails.mobile}"></td>
+                    <td th:text="${getAccountDetails.email}"></td>
+                    <td th:text="${getAccountDetails.username}"></td>
 
                 </tr>
                 </tbody>
