@@ -24,7 +24,10 @@ public class Registration
     private String lastName;
 
     @Column(name = "mobile")
-    private int mobileNo ;
+    private int mobile ;
+
+    @Column(name = "username")
+    private String username ;
 
     //Getter for Email
     public String getEmail() {return email; }
@@ -60,15 +63,24 @@ public class Registration
     }
 
     //Getter for Mobile
-    public int getMobileNo()
+    public int getMobile()
     {
-        return mobileNo;
+        return mobile;
     }
 
     //Setter for mobile
-    public void setMobileNo(int mobileNo)
+    public void setMobile(int mobileNo)
     {
-        this.mobileNo= mobileNo;
+        this.mobile= mobileNo;
+    }
+
+    //Getter for Username
+    public String getUsername() {return username; }
+
+    //Setter for Username
+    public void setUsername(String username)
+    {
+        this.username = username;
     }
 
 }
