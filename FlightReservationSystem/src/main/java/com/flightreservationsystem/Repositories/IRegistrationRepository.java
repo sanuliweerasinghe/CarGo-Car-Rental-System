@@ -9,4 +9,6 @@ public interface IRegistrationRepository extends CrudRepository<Registration, St
     // Method to retrieve all records of registration table
     List<Registration> findAll();
 
+    // Method to retrieve reservations of a logged in user
+    List<Registration> findAccountByUsername(String username);
 }

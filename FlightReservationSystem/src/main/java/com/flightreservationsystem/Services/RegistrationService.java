@@ -23,4 +23,10 @@ public class RegistrationService {
         return registration;
     }
 
+    // Method to get account details of the logged in user
+    public List<Registration> getAccountByUsername(String username)
+    {
+        List<Registration> myAccountDetails = iRegistrationRepository.findAccountByUsername(username);
+        return myAccountDetails;
+    }
 }
