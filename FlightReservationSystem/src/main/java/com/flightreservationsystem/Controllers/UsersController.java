@@ -101,7 +101,7 @@ public class UsersController
     }
 
     // ---------------------------------- Method to Logout the logged in user ---------------------------------------
-    @GetMapping("/Logout")
+    @PostMapping("/Logout")
     public String logout(HttpServletRequest request)
     {
         HttpSession session = request.getSession(false);
@@ -111,6 +111,6 @@ public class UsersController
         {
             session.invalidate();
         }
-        return "../static/Home";
+        return "LoginForm";
     }
 }
