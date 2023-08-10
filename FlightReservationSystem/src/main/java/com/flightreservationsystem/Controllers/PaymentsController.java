@@ -1,70 +1,90 @@
 package com.flightreservationsystem.Controllers;
 
 import java.sql.Date;
-import java.util.List;
 import java.util.Optional;
 
 import com.flightreservationsystem.Models.Payments;
-import com.flightreservationsystem.Repositories.IFlightsRepository;
-import com.flightreservationsystem.Services.FlightsService;
+import com.flightreservationsystem.Models.Reservations;
+import com.flightreservationsystem.Repositories.IPaymentsRepository;
+import com.flightreservationsystem.Repositories.IReservationsRepository;
+import com.flightreservationsystem.Services.PaymentsService;
+import com.flightreservationsystem.Services.ReservationsService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import com.flightreservationsystem.Models.Flights;
 
-import javax.servlet.http.HttpSession;
 
 //Marking class as Controller
 @Controller
 public class PaymentsController
 {
-    //autowire the FlightsRepository
+    //autowire the PaymentsRepository
     @Autowired
-    IFlightsRepository iPaymentsRepository;
+    IPaymentsRepository iPaymentsRepository;
 
-    //autowire the FlightsService class
+    //autowire the PaymentsService class
     @Autowired
-    FlightsService paymentsService;
+    PaymentsService paymentsService;
+
+    //autowire the ReservationsRepository
+    @Autowired
+    IReservationsRepository iReservationsRepository;
+
+    //autowire the ReservationsService class
+    @Autowired
+    ReservationsService reservationsService;
 
     // --------------------------------- Methods for Adding Payment ---------------------------------------
 
     // Method to get the form inputs to be entered into payments table
     @GetMapping("/Payment")
-    public String getPaymentData(Model model)
+    public String getPaymentData(Model model, HttpSession session)
     {
         // Creating an object and passing it as a thymeleaf object
         Payments payment = new Payments();
         model.addAttribute("payment", payment);
 
-        // Using the thymeleaf object to access the user inputs
+        // Getting the username and bookingDate
+        String username = (String) session.getAttribute("username");
+        Date bookingDate = new Date(System.currentTimeMillis());
 
-        model.addAttribute("PayerName", payment);
-        model.addAttribute("PaymentType", payment);
-        model.addAttribute("PayAmount", payment);
+        // Method to get the booking recorded for the logged in user for the current date
+        Optional<Reservations> getBooking = reservationsService.getBookingByUsernameAndBookingDate(username, bookingDate);
 
+        // If the booking record is created
+        if (getBooking.isPresent())
+        {
+            // Add the bookingID as a model attribute
+            model.addAttribute("bookingID", getBooking.get().getBookingID());
 
-        // Passing the current date as the pay date
-        model.addAttribute("payDate", new java.sql.Date(System.currentTimeMillis()));
+            // Using the thymeleaf object to access the user inputs
+            model.addAttribute("PayerName", payment);
+            model.addAttribute("PaymentType", payment);
+            model.addAttribute("PayAmount", payment);
 
-        return "Payment";
+            // Passing the current date as the pay date
+            model.addAttribute("payDate", new java.sql.Date(System.currentTimeMillis()));
+        }
+            return "Payment";
     }
 
     // Method to add records to payments table
     @PostMapping("/Payment")
-    public String payment(@ModelAttribute Payments payment, Model model)
+    public String payment(@ModelAttribute Payments addPayment, Model model)
     {
         // Creating an object and passing it as a thymeleaf object
         Payments payment = new Payments();
         model.addAttribute("payment", payment);
 
         // use the object to interact with database to save the new payment record
-        iPaymentsRepository.save(payment);
+        iPaymentsRepository.save(addPayment);
 
-        return "ViewFlightsAdmin";
+        return "redirect:ViewReservations";
     }
 
+    /*
     @GetMapping("/Payment")
     public String bookFlight(@RequestParam("bookingID") int bookingID,
                              Model model, HttpSession session)
@@ -81,5 +101,5 @@ public class PaymentsController
             return "Payment";
         }
         return null;
-    }
+    } */
 }
